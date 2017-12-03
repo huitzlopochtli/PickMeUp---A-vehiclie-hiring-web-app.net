@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickMeUp", "PickMeUp\PickMeUp.csproj", "{E0F5FC66-3E00-435E-978C-8D3446158C4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickMeUp.Data", "PickMeUp.Data\PickMeUp.Data.csproj", "{E1815F84-2BA9-4911-9F2D-D88811EEAB56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickMeUp.Entity", "PickMeUp.Entity\PickMeUp.Entity.csproj", "{6EA7C7B4-3285-4D7B-879D-1B57392B25AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{E0F5FC66-3E00-435E-978C-8D3446158C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0F5FC66-3E00-435E-978C-8D3446158C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0F5FC66-3E00-435E-978C-8D3446158C4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1815F84-2BA9-4911-9F2D-D88811EEAB56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1815F84-2BA9-4911-9F2D-D88811EEAB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1815F84-2BA9-4911-9F2D-D88811EEAB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1815F84-2BA9-4911-9F2D-D88811EEAB56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EA7C7B4-3285-4D7B-879D-1B57392B25AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EA7C7B4-3285-4D7B-879D-1B57392B25AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EA7C7B4-3285-4D7B-879D-1B57392B25AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EA7C7B4-3285-4D7B-879D-1B57392B25AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
