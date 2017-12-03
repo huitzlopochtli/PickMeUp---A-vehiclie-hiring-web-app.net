@@ -171,15 +171,15 @@ namespace PickMeUp.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterPassengerViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Username, Email = model.Email };
+                var user = new User { UserName = model.Username, Email = model.Email, Fullname = model.Fullname };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
+                    result = await UserManager.AddToRoleAsync(user.Id, "Passenger");
                     
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
