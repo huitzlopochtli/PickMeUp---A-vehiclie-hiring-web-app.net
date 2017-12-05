@@ -96,7 +96,9 @@ namespace PickMeUp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -179,7 +181,7 @@ namespace PickMeUp.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddToRoleAsync(user.Id, "Passenger");
+                    result = await UserManager.AddToRoleAsync(user.Id, "Admin");
                     
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
@@ -505,6 +507,7 @@ namespace PickMeUp.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+
         }
         #endregion
     }

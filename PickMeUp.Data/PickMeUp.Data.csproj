@@ -62,6 +62,18 @@
     <Compile Include="Migrations\201712031951421_AddedRole.Designer.cs">
       <DependentUpon>201712031951421_AddedRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712051657138_AddedPassengersTable.cs" />
+    <Compile Include="Migrations\201712051657138_AddedPassengersTable.Designer.cs">
+      <DependentUpon>201712051657138_AddedPassengersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712051700520_AddedPassengersTable1.cs" />
+    <Compile Include="Migrations\201712051700520_AddedPassengersTable1.Designer.cs">
+      <DependentUpon>201712051700520_AddedPassengersTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712051702044_AddedPassengersTable2.cs" />
+    <Compile Include="Migrations\201712051702044_AddedPassengersTable2.Designer.cs">
+      <DependentUpon>201712051702044_AddedPassengersTable2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +87,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712031951421_AddedRole.resx">
       <DependentUpon>201712031951421_AddedRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051657138_AddedPassengersTable.resx">
+      <DependentUpon>201712051657138_AddedPassengersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051700520_AddedPassengersTable1.resx">
+      <DependentUpon>201712051700520_AddedPassengersTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051702044_AddedPassengersTable2.resx">
+      <DependentUpon>201712051702044_AddedPassengersTable2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

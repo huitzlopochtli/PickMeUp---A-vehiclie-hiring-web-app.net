@@ -32,6 +32,6 @@ namespace PickMeUp.Data
             return new ApplicationDbContext();
         }
 
-        
+        public DbSet<Passenger> Passengers { get; set; }
     }
 }
