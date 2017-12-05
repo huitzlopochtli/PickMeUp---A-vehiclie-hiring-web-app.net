@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
@@ -121,7 +122,36 @@ namespace PickMeUp.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string Fullname { get; set; }
+
+        [Required]
+        public string DrivingLicence { get; set; }
+
+
+        [Required]
+        public string VehicleType { get; set; }
+
+
+        [Required]
+        public string VehicleModelName { get; set; }
+
+        [Required]
+        public string VehicleCompanyName { get; set; }
+
+        [Required]
+        public string VehicleColor { get; set; }
+
+
+        [Required]
+        public string VehicleRegNum { get; set; }
+
+
+        [Required]
+        public DateTime VehicleRegDate { get; set; }
         
+
     }
 
     public class ResetPasswordViewModel

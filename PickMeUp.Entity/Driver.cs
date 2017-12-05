@@ -14,6 +14,7 @@ namespace PickMeUp.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int  Id { get; set; }
 
+        [Index(IsUnique = true)]
         public string DrivingLicence { get; set; }
 
         public User User { get; set; }
