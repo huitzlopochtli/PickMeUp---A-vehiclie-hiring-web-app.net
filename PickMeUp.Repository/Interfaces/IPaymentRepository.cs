@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PickMeUp.Repository.Interfaces
 {
-    public interface IPassengerRepository : IRepository<Passenger>
+    public interface IPaymentRepository : IRepository<Payment>
     {
     }
 }

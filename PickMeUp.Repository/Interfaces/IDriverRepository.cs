@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace PickMeUp.Repository.Interfaces
 {
-    public interface IPassengerRepository : IRepository<Passenger>
+    public interface IDriverRepository : IRepository<Driver>
     {
+        IEnumerable<Driver> GetAllAvalible(string vehicleType);
+
+        
     }
 }

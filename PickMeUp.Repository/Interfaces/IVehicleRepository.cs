@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace PickMeUp.Repository.Interfaces
 {
-    public interface IPassengerRepository : IRepository<Passenger>
+    public interface IVehicleRepository : IRepository<Vehicle>
     {
+        Vehicle GetVehicleByDriverId(int id);
+        Vehicle GetVehicleByDriver(Driver driver);
     }
 }

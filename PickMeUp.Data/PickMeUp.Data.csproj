@@ -94,6 +94,18 @@
     <Compile Include="Migrations\201712051912516_AddedUniqeFields.Designer.cs">
       <DependentUpon>201712051912516_AddedUniqeFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712051931120_AddedStatusToDrivesTable.cs" />
+    <Compile Include="Migrations\201712051931120_AddedStatusToDrivesTable.Designer.cs">
+      <DependentUpon>201712051931120_AddedStatusToDrivesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712051954448_AddedPayedToPaymentsTable.cs" />
+    <Compile Include="Migrations\201712051954448_AddedPayedToPaymentsTable.Designer.cs">
+      <DependentUpon>201712051954448_AddedPayedToPaymentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712051958125_AddedRideStatusToRidesTable.cs" />
+    <Compile Include="Migrations\201712051958125_AddedRideStatusToRidesTable.Designer.cs">
+      <DependentUpon>201712051958125_AddedRideStatusToRidesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -131,6 +143,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712051912516_AddedUniqeFields.resx">
       <DependentUpon>201712051912516_AddedUniqeFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051931120_AddedStatusToDrivesTable.resx">
+      <DependentUpon>201712051931120_AddedStatusToDrivesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051954448_AddedPayedToPaymentsTable.resx">
+      <DependentUpon>201712051954448_AddedPayedToPaymentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051958125_AddedRideStatusToRidesTable.resx">
+      <DependentUpon>201712051958125_AddedRideStatusToRidesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

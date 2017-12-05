@@ -53,15 +53,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DriverRepository.cs" />
+    <Compile Include="Interfaces\IDriverRepository.cs" />
     <Compile Include="Interfaces\IPassengerRepository.cs" />
+    <Compile Include="Interfaces\IPaymentRepository.cs" />
+    <Compile Include="Interfaces\IPaymentTypeRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IRideRepository.cs" />
+    <Compile Include="Interfaces\IVehicleRepository.cs" />
+    <Compile Include="Interfaces\IVehicleTypeRepository.cs" />
+    <Compile Include="PassengerRepository.cs" />
+    <Compile Include="PaymentRepository.cs" />
+    <Compile Include="PaymentTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="RideRepository.cs" />
+    <Compile Include="VehicleRepository.cs" />
+    <Compile Include="VehicleTypeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PickMeUp.Data\PickMeUp.Data.csproj">
       <Project>{E1815F84-2BA9-4911-9F2D-D88811EEAB56}</Project>
       <Name>PickMeUp.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PickMeUp.Entity\PickMeUp.Entity.csproj">
+      <Project>{6EA7C7B4-3285-4D7B-879D-1B57392B25AE}</Project>
+      <Name>PickMeUp.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

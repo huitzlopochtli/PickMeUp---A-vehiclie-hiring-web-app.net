@@ -26,6 +26,15 @@ namespace PickMeUp.Entity
 
         public int TotalRides { get; set; }
 
+        public Status Status { get; set; }
+
+    }
+
+    public enum Status
+    {
+        Availble = 1,
+        Driving = 0,
+        Unavailable = 2
     }
 }
  

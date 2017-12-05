@@ -1,13 +1,14 @@
 ﻿using PickMeUp.Entity;
+using PickMeUp.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PickMeUp.Repository.Interfaces
+namespace PickMeUp.Repository
 {
-    public interface IPassengerRepository : IRepository<Passenger>
+    public class PaymentRepository : Repository<Payment> , IPaymentRepository
     {
     }
 }

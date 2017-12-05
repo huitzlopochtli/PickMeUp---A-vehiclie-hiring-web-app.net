@@ -29,5 +29,15 @@ namespace PickMeUp.Entity
         [ForeignKey("Payment")]
         public int PaymentId { get; set; }
 
+        public RideStatus RideStatus { get; set; }
+
+    }
+
+    public enum RideStatus
+    {
+        Finished = 1,
+        Cancelled = 2,
+        OnGoing = 3,
+        NotAccepted = 0
     }
 }
