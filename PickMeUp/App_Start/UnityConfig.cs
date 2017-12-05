@@ -1,6 +1,10 @@
+using PickMeUp.Controllers;
+using PickMeUp.Repository;
+using PickMeUp.Repository.Interfaces;
 using System;
 
 using Unity;
+using Unity.Injection;
 
 namespace PickMeUp
 {
@@ -42,6 +46,9 @@ namespace PickMeUp
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<IVehicleTypeRepository, VehicleTypeRepository>();
         }
     }
 }

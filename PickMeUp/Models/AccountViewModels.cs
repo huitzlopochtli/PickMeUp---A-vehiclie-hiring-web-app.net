@@ -150,7 +150,6 @@ namespace PickMeUp.Models
 
         [Required]
         public DateTime VehicleRegDate { get; set; }
-        
 
     }
 

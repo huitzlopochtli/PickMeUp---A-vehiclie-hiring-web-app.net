@@ -204,14 +204,17 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PassengersController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin\RoleViewModel.cs" />
+    <Compile Include="Models\Admin\VehicleTypeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -278,9 +281,17 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Account\RegisterDriver.cshtml" />
+    <Content Include="Views\VehicleTypes\Index.cshtml" />
+    <Content Include="Views\VehicleTypes\Create.cshtml" />
+    <Content Include="Views\VehicleTypes\Edit.cshtml" />
+    <Content Include="Views\VehicleTypes\Details.cshtml" />
+    <Content Include="Views\VehicleTypes\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Drivers\" />
+    <Folder Include="Views\Passengers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -303,6 +314,10 @@
     <ProjectReference Include="..\PickMeUp.Entity\PickMeUp.Entity.csproj">
       <Project>{6EA7C7B4-3285-4D7B-879D-1B57392B25AE}</Project>
       <Name>PickMeUp.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PickMeUp.Repository\PickMeUp.Repository.csproj">
+      <Project>{D934D05A-7D19-4B0A-B40B-6301C2F73FD2}</Project>
+      <Name>PickMeUp.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

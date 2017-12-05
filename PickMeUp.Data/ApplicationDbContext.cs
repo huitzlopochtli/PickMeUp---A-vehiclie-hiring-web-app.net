@@ -40,6 +40,6 @@ namespace PickMeUp.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentType> PaymentType { get; set; }
 
-
+        
     }
 }

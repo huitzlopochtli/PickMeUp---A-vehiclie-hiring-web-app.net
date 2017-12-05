@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using PickMeUp.Models;
 using PickMeUp.Entity;
 using System.Collections.Generic;
+using PickMeUp.Repository.Interfaces;
+using PickMeUp.Repository;
 
 namespace PickMeUp.Controllers
 {
@@ -20,16 +22,18 @@ namespace PickMeUp.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
+        private IVehicleTypeRepository _vehicleTypeRepo;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager, IVehicleTypeRepository vehicleTypeRepo)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             RoleManager = roleManager;
+            _vehicleTypeRepo = vehicleTypeRepo;
         }
 
         public ApplicationSignInManager SignInManager
@@ -217,6 +221,8 @@ namespace PickMeUp.Controllers
             //        roles.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
             //}
             //ViewBag.Roles = roles;
+
+
             return View();
         }
 
@@ -238,7 +244,7 @@ namespace PickMeUp.Controllers
                     result = await UserManager.AddToRoleAsync(user.Id, "Driver");
 
                     Driver driver = new Driver() { DrivingLicence = model.DrivingLicence , User = user};
-                    Vehicle vehicle = new Vehicle() { Driver = driver, ModelName = model.VehicleModelName, CompanyName = model.VehicleCompanyName, Color = model.VehicleColor, RegNumber = model.VehicleRegNum, RegDate = model.VehicleRegDate /*,VehilcleType = _VehicleTypeRepo.GetVehicleByName(model.VehicleType)*/};
+                    Vehicle vehicle = new Vehicle() { Driver = driver, ModelName = model.VehicleModelName, CompanyName = model.VehicleCompanyName, Color = model.VehicleColor, RegNumber = model.VehicleRegNum, RegDate = model.VehicleRegDate /*,VehilcleType = _vehicleTypeRepo.GetVehicleByName(model.VehicleType)*/};
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 

@@ -106,6 +106,10 @@
     <Compile Include="Migrations\201712051958125_AddedRideStatusToRidesTable.Designer.cs">
       <DependentUpon>201712051958125_AddedRideStatusToRidesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712052212029_AddedChanges1.cs" />
+    <Compile Include="Migrations\201712052212029_AddedChanges1.Designer.cs">
+      <DependentUpon>201712052212029_AddedChanges1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -152,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712051958125_AddedRideStatusToRidesTable.resx">
       <DependentUpon>201712051958125_AddedRideStatusToRidesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712052212029_AddedChanges1.resx">
+      <DependentUpon>201712052212029_AddedChanges1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

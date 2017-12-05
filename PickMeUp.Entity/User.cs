@@ -27,5 +27,17 @@ namespace PickMeUp.Entity
             // Add custom user claims here
             return userIdentity;
         }
+
+        public User()
+            :base()
+        {
+
+        }
+
+        public User(string username)
+            :base(username)
+        {
+
+        }
     }
 }
