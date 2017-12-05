@@ -15,6 +15,7 @@ namespace PickMeUp.Entity
         public int  Id { get; set; }
 
         [Index(IsUnique = true)]
+        [StringLength(200)]
         public string DrivingLicence { get; set; }
 
         public User User { get; set; }

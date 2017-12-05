@@ -90,6 +90,10 @@
     <Compile Include="Migrations\201712051808400_AddedRidesPaymentsandPaymentTypesTable.Designer.cs">
       <DependentUpon>201712051808400_AddedRidesPaymentsandPaymentTypesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712051912516_AddedUniqeFields.cs" />
+    <Compile Include="Migrations\201712051912516_AddedUniqeFields.Designer.cs">
+      <DependentUpon>201712051912516_AddedUniqeFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -124,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712051808400_AddedRidesPaymentsandPaymentTypesTable.resx">
       <DependentUpon>201712051808400_AddedRidesPaymentsandPaymentTypesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051912516_AddedUniqeFields.resx">
+      <DependentUpon>201712051912516_AddedUniqeFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

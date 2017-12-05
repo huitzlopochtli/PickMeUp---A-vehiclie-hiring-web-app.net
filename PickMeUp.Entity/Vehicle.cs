@@ -20,6 +20,7 @@ namespace PickMeUp.Entity
         public string Color { get; set; }
 
         [Index(IsUnique = true)]
+        [StringLength(200)]
         public string RegNumber { get; set; }
 
         public DateTime RegDate { get; set; }
