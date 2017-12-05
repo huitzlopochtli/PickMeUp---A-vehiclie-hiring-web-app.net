@@ -36,5 +36,10 @@ namespace PickMeUp.Data
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<VehicleType> VehicleTypes { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Ride> Rides { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<PaymentType> PaymentType { get; set; }
+
+
     }
 }

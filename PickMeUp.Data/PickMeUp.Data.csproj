@@ -82,6 +82,14 @@
     <Compile Include="Migrations\201712051743376_AddedDriversTableAndImagesToUsersTable1.Designer.cs">
       <DependentUpon>201712051743376_AddedDriversTableAndImagesToUsersTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712051759569_AddedVehilcesAndVehicleTypesTable.cs" />
+    <Compile Include="Migrations\201712051759569_AddedVehilcesAndVehicleTypesTable.Designer.cs">
+      <DependentUpon>201712051759569_AddedVehilcesAndVehicleTypesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712051808400_AddedRidesPaymentsandPaymentTypesTable.cs" />
+    <Compile Include="Migrations\201712051808400_AddedRidesPaymentsandPaymentTypesTable.Designer.cs">
+      <DependentUpon>201712051808400_AddedRidesPaymentsandPaymentTypesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712051743376_AddedDriversTableAndImagesToUsersTable1.resx">
       <DependentUpon>201712051743376_AddedDriversTableAndImagesToUsersTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051759569_AddedVehilcesAndVehicleTypesTable.resx">
+      <DependentUpon>201712051759569_AddedVehilcesAndVehicleTypesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051808400_AddedRidesPaymentsandPaymentTypesTable.resx">
+      <DependentUpon>201712051808400_AddedRidesPaymentsandPaymentTypesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

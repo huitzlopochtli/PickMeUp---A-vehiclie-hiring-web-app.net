@@ -56,7 +56,9 @@
   <ItemGroup>
     <Compile Include="Driver.cs" />
     <Compile Include="Passenger.cs" />
+    <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ride.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Vehicle.cs" />
