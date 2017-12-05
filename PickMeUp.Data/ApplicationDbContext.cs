@@ -33,5 +33,6 @@ namespace PickMeUp.Data
         }
 
         public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
     }
 }

@@ -3,21 +3,22 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace PickMeUp.Entity
 {
     public class User : IdentityUser
     {
         //Custom Properties
-        [Required]
         public string Fullname { get; set; }
 
-
-
+        //public HttpPostedFileBase Image { get; set; }
+        //file.InputStream.Read(user.Image,0, file.ContentLength); in EditViewModel
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

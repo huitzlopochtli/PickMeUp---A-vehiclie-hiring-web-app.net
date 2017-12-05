@@ -74,6 +74,14 @@
     <Compile Include="Migrations\201712051702044_AddedPassengersTable2.Designer.cs">
       <DependentUpon>201712051702044_AddedPassengersTable2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712051714195_AddedDriversTableAndImagesToUsersTable.cs" />
+    <Compile Include="Migrations\201712051714195_AddedDriversTableAndImagesToUsersTable.Designer.cs">
+      <DependentUpon>201712051714195_AddedDriversTableAndImagesToUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712051743376_AddedDriversTableAndImagesToUsersTable1.cs" />
+    <Compile Include="Migrations\201712051743376_AddedDriversTableAndImagesToUsersTable1.Designer.cs">
+      <DependentUpon>201712051743376_AddedDriversTableAndImagesToUsersTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -96,6 +104,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712051702044_AddedPassengersTable2.resx">
       <DependentUpon>201712051702044_AddedPassengersTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051714195_AddedDriversTableAndImagesToUsersTable.resx">
+      <DependentUpon>201712051714195_AddedDriversTableAndImagesToUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712051743376_AddedDriversTableAndImagesToUsersTable1.resx">
+      <DependentUpon>201712051743376_AddedDriversTableAndImagesToUsersTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

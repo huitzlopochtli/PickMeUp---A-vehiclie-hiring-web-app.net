@@ -158,13 +158,13 @@ namespace PickMeUp.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            List<SelectListItem> roles = new List<SelectListItem>();
-            foreach (var role in RoleManager.Roles)
-            {
-                if(!role.Name.Equals("Admin"))
-                    roles.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
-            }
-            ViewBag.Roles = roles;
+            //List<SelectListItem> roles = new List<SelectListItem>();
+            //foreach (var role in RoleManager.Roles)
+            //{
+            //    if(!role.Name.Equals("Admin"))
+            //        roles.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            //}
+            //ViewBag.Roles = roles;
             return View();
         }
 
@@ -175,13 +175,15 @@ namespace PickMeUp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterPassengerViewModel model)
         {
+            //admin abcD123$
+
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.Username, Email = model.Email, Fullname = model.Fullname };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddToRoleAsync(user.Id, "Admin");
+                    result = await UserManager.AddToRoleAsync(user.Id, "Passenger");
                     
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
@@ -191,7 +193,7 @@ namespace PickMeUp.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Passengers");
                 }
                 AddErrors(result);
             }
