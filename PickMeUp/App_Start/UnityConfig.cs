@@ -1,10 +1,15 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using PickMeUp.Controllers;
+using PickMeUp.Data;
+using PickMeUp.Entity;
 using PickMeUp.Repository;
 using PickMeUp.Repository.Interfaces;
 using System;
-
+using System.Data.Entity;
 using Unity;
 using Unity.Injection;
+using Unity.Lifetime;
 
 namespace PickMeUp
 {
@@ -46,8 +51,21 @@ namespace PickMeUp
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-
             container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
+
+            container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<RoleController>(new InjectionConstructor());
+            //container.RegisterType<VehicleTypesController>(new InjectionConstructor());
+
+            //container.RegisterType<UserManager<User>>(new HierarchicalLifetimeManager());
+            //container.RegisterType<IUserStore<User>, UserStore<User>>(new HierarchicalLifetimeManager());
+            //container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
+
+            //container.RegisterType<UserManager<User>>(new HierarchicalLifetimeManager());
+            //container.RegisterType<IUserStore<User>, UserStore<User>>(new HierarchicalLifetimeManager());
+
+
             container.RegisterType<IVehicleTypeRepository, VehicleTypeRepository>();
         }
     }
