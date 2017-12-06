@@ -97,7 +97,7 @@ namespace PickMeUp.Models
         [Required]
         [Display(Name = "Full name")]
         public string Fullname { get; set; }
-
+        
     }
 
     public class RegisterDriverViewModel
@@ -145,6 +145,7 @@ namespace PickMeUp.Models
 
 
         [Required]
+        [DataType(DataType.Date)]
         public string VehicleRegNum { get; set; }
 
 

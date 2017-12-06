@@ -17,6 +17,10 @@ namespace PickMeUp.Repository
             return Context.Drivers.Where(d => d.Status == Status.Availble && vehiclesDriverId.Contains(d.Id)).ToList();
         }
 
-        
+        public Driver GetDriverByUserId(string UserId)
+        {
+            var driver = Context.Drivers.Where(d => d.UserId == UserId).SingleOrDefault();
+            return driver;
+        }
     }
 }

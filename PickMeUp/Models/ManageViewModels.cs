@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using PickMeUp.Entity;
+using System;
 
 namespace PickMeUp.Models
 {
@@ -82,5 +84,126 @@ namespace PickMeUp.Models
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    }
+
+    public class ChangeAdminDetailsViewModel
+    {
+        public ChangeAdminDetailsViewModel()
+        {
+
+        }
+
+        public ChangeAdminDetailsViewModel(User user)
+        {
+            Id = user.Id;
+            UserName = user.UserName;
+            Email = user.Email;
+            Fullname = user.Fullname;
+        }
+
+        public string Id { get; set; }
+
+
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Email Address")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Full Name")]
+        public string Fullname { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+    }
+
+    public class ChangeDriverDetailsViewModel
+    {
+        public ChangeDriverDetailsViewModel()
+        {
+
+        }
+
+        public ChangeDriverDetailsViewModel(User user , Driver driver, Vehicle vehicle)
+        {
+            Id = user.Id;
+            DriverId = driver.Id;
+            VehicleId = vehicle.Id;
+
+
+            UserName = user.UserName;
+            Email = user.Email;
+            Fullname = user.Fullname;
+
+            DrivingLicence = driver.DrivingLicence;
+
+
+
+            ModelName = vehicle.ModelName;
+            CompanyName = vehicle.CompanyName;
+            Color = vehicle.Color;
+            RegDate = vehicle.RegDate;
+            RegNumber = vehicle.RegNumber;
+        }
+
+        public string Id { get; set; }
+        public int DriverId { get; set; }
+
+
+
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Email Address")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Full Name")]
+        public string Fullname { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+
+        [Display(Name = "Driving Licence")]
+        [Required]
+        public string DrivingLicence { get; set; }
+
+
+        
+        public int VehicleId { get; set; }
+
+        [Required]
+        [Display(Name = "Vechicle Type")]
+        public string VehicleType { get; set; }
+
+        [Required]
+        [Display(Name = "Vehicle Model Name")]
+        public string ModelName { get; set; }
+
+
+        [Required]
+        [Display(Name ="Vehicle Company Name")]
+        public string CompanyName { get; set; }
+
+        [Required]
+        [Display(Name = "Vehicle Color")]
+        public string Color { get; set; }
+
+        [Required]
+        [Display(Name = "Vehicle Registration Number")]
+        public string RegNumber { get; set; }
+
+
+        [Required]
+        [Display(Name = "Vehicle Registration Date")]
+        [DataType(DataType.Date)]
+        public DateTime RegDate { get; set; }
+
     }
 }

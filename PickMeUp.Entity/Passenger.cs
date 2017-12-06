@@ -11,7 +11,6 @@ namespace PickMeUp.Entity
     public class Passenger
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public User User { get; set; }

@@ -11,6 +11,6 @@ namespace PickMeUp.Repository.Interfaces
     {
         IEnumerable<Driver> GetAllAvalible(string vehicleType);
 
-        
+        Driver GetDriverByUserId(string UserId);
     }
 }

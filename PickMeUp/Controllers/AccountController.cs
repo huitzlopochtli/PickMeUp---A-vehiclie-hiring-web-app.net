@@ -22,18 +22,30 @@ namespace PickMeUp.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
-        private IVehicleTypeRepository _vehicleTypeRepo;
+        private IVehicleTypeRepository _vehicleTypeRepository;
+        private IDriverRepository _driverRepository;
+        private IVehicleRepository _vehicleRepository;
+        private IPassengerRepository _passengerRepository;
+
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager, IVehicleTypeRepository vehicleTypeRepo)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             RoleManager = roleManager;
-            _vehicleTypeRepo = vehicleTypeRepo;
+
+        }
+        public AccountController(IVehicleTypeRepository vehicleTypeRepository, IDriverRepository driverRepository, IPassengerRepository passengerRepository,IVehicleRepository vehicleRepository)
+        {
+            _vehicleTypeRepository = vehicleTypeRepository;
+            _driverRepository = driverRepository;
+            _vehicleRepository = vehicleRepository;
+            _passengerRepository = passengerRepository;
+
         }
 
         public ApplicationSignInManager SignInManager
@@ -42,9 +54,9 @@ namespace PickMeUp.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -143,7 +155,7 @@ namespace PickMeUp.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -189,12 +201,13 @@ namespace PickMeUp.Controllers
                 {
                     result = await UserManager.AddToRoleAsync(user.Id, "Passenger");
 
-                    Passenger passenger = new Passenger() { User = user};
+                    Passenger passenger = new Passenger() { UserId = user.Id };
+                    _passengerRepository.Add(passenger);
 
                     //await _passengerRepo.Add(passenger);
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -214,13 +227,13 @@ namespace PickMeUp.Controllers
         [AllowAnonymous]
         public ActionResult RegisterDriver()
         {
-            //List<SelectListItem> roles = new List<SelectListItem>();
-            //foreach (var role in RoleManager.Roles)
-            //{
-            //    if(!role.Name.Equals("Admin"))
-            //        roles.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
-            //}
-            //ViewBag.Roles = roles;
+            List<SelectListItem> vehicleTypes = new List<SelectListItem>();
+            var vehicleTypesList = _vehicleTypeRepository.GetAll();
+            foreach (var vehicleType in vehicleTypesList)
+            {
+                vehicleTypes.Add(new SelectListItem() { Value = vehicleType.Name, Text = vehicleType.Name });
+            }
+            ViewBag.Roles = vehicleTypes;
 
 
             return View();
@@ -243,8 +256,10 @@ namespace PickMeUp.Controllers
                 {
                     result = await UserManager.AddToRoleAsync(user.Id, "Driver");
 
-                    Driver driver = new Driver() { DrivingLicence = model.DrivingLicence , User = user};
-                    Vehicle vehicle = new Vehicle() { Driver = driver, ModelName = model.VehicleModelName, CompanyName = model.VehicleCompanyName, Color = model.VehicleColor, RegNumber = model.VehicleRegNum, RegDate = model.VehicleRegDate /*,VehilcleType = _vehicleTypeRepo.GetVehicleByName(model.VehicleType)*/};
+                    Driver driver = new Driver() { DrivingLicence = model.DrivingLicence, User = user };
+                    _driverRepository.Add(driver);
+                    Vehicle vehicle = new Vehicle() { Driver = driver, ModelName = model.VehicleModelName, CompanyName = model.VehicleCompanyName, Color = model.VehicleColor, RegNumber = model.VehicleRegNum, RegDate = model.VehicleRegDate, VehicleType = _vehicleTypeRepository.GetVehicleByName(model.VehicleType) };
+                    _vehicleRepository.Add(vehicle);
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 

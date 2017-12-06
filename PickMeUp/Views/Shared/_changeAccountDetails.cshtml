@@ -1,0 +1,22 @@
+﻿<dt>Account Details:</dt>
+<dd>
+    [
+    @{
+        if (HttpContext.Current.User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Change your account details", "ChangeAdminDetails")
+        }
+
+        else if (HttpContext.Current.User.IsInRole("Driver"))
+        {
+            @Html.ActionLink("Change your account details", "ChangeDriverDetails")
+        }
+
+        else if (HttpContext.Current.User.IsInRole("Passenger"))
+        {
+            @Html.ActionLink("Change your account details", "ChangePassengerDetails")
+        }
+
+    }
+    ]
+</dd>

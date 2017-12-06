@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickMeUp.Entity", "PickMeUp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickMeUp.Repository", "PickMeUp.Repository\PickMeUp.Repository.csproj", "{D934D05A-7D19-4B0A-B40B-6301C2F73FD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickMeUp.Test", "PickMeUp.Test\PickMeUp.Test.csproj", "{BBD38B07-3960-4727-9A30-F0F368BA6DDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D934D05A-7D19-4B0A-B40B-6301C2F73FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D934D05A-7D19-4B0A-B40B-6301C2F73FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D934D05A-7D19-4B0A-B40B-6301C2F73FD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBD38B07-3960-4727-9A30-F0F368BA6DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD38B07-3960-4727-9A30-F0F368BA6DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD38B07-3960-4727-9A30-F0F368BA6DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD38B07-3960-4727-9A30-F0F368BA6DDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -39,7 +39,5 @@ namespace PickMeUp.Data
         public DbSet<Ride> Rides { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentType> PaymentType { get; set; }
-
-        
     }
 }

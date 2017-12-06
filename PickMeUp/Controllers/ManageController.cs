@@ -7,6 +7,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PickMeUp.Models;
+using PickMeUp.Entity;
+using PickMeUp.Data;
+using Microsoft.AspNet.Identity.EntityFramework;
+using PickMeUp.Repository.Interfaces;
 
 namespace PickMeUp.Controllers
 {
@@ -15,15 +19,19 @@ namespace PickMeUp.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IDriverRepository _driverRepository;
+        private IVehicleRepository _vehicleRepository;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IDriverRepository driverRepository, IVehicleRepository vehicleRepository)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _driverRepository = driverRepository;
+            _vehicleRepository = vehicleRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -32,9 +40,9 @@ namespace PickMeUp.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -333,7 +341,7 @@ namespace PickMeUp.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +392,105 @@ namespace PickMeUp.Controllers
             Error
         }
 
-#endregion
+        [HttpGet]
+        public ActionResult ChangeAdminDetails()
+        {
+            ChangeAdminDetailsViewModel model = new ChangeAdminDetailsViewModel();
+
+            User user = System.Web.HttpContext.Current.GetOwinContext()
+                        .GetUserManager<ApplicationUserManager>()
+                        .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            model.Id = user.Id;
+            model.UserName = user.UserName;
+            model.Email = user.Email;
+            model.Fullname = user.Fullname;
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeAdminDetails(ChangeAdminDetailsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = UserManager.FindById(model.Id);
+
+                user.UserName = model.UserName;
+                user.Email = model.Email;
+                user.Fullname = model.Fullname;
+
+                UserManager.Update(user);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
+
+        public ActionResult ChangeDriverDetails()
+        {
+            User user = System.Web.HttpContext.Current.GetOwinContext()
+                        .GetUserManager<ApplicationUserManager>()
+                        .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            Driver driver = _driverRepository.GetDriverByUserId(user.Id);
+
+            Vehicle vehicle = _vehicleRepository.GetVehicleByDriverId(driver.Id);
+
+            ChangeDriverDetailsViewModel model = new ChangeDriverDetailsViewModel();
+
+            model.Id = user.Id;
+            model.UserName = user.UserName;
+            model.Email = user.Email;
+            model.Fullname = user.Fullname;
+
+            model.DriverId = driver.Id;
+            model.DrivingLicence = driver.DrivingLicence;
+
+            model.VehicleId = vehicle.Id;
+            model.ModelName = vehicle.ModelName;
+            model.CompanyName = vehicle.CompanyName;
+            model.Color = vehicle.Color;
+            model.RegDate = vehicle.RegDate;
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeDriverDetails(ChangeDriverDetailsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = UserManager.FindById(model.Id);
+
+                user.UserName = model.UserName;
+                user.Email = model.Email;
+                user.Fullname = model.Fullname;
+
+                UserManager.Update(user);
+
+                Driver driver = _driverRepository.Get(model.DriverId);
+                driver.DrivingLicence = model.DrivingLicence;
+
+                _driverRepository.Update(driver);
+
+                Vehicle vehicle = _vehicleRepository.Get(model.VehicleId);
+                vehicle.Color = model.Color;
+                vehicle.ModelName = model.ModelName;
+                vehicle.CompanyName = model.CompanyName;
+                vehicle.RegNumber = model.RegNumber;
+                vehicle.RegDate = model.RegDate;
+                _vehicleRepository.Update(vehicle);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+        #endregion
     }
 }
