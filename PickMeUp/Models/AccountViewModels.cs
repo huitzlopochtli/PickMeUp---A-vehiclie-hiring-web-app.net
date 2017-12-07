@@ -124,32 +124,40 @@ namespace PickMeUp.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [Display(Name = "Full name")]
         public string Fullname { get; set; }
 
         [Required]
+        [Display(Name ="Driving Licence")]
         public string DrivingLicence { get; set; }
 
 
         [Required]
+        [Display(Name = "Vehicle Type")]
         public string VehicleType { get; set; }
 
 
         [Required]
+        [Display(Name = "Model name")]
         public string VehicleModelName { get; set; }
 
         [Required]
+        [Display(Name = "Company name")]
         public string VehicleCompanyName { get; set; }
 
         [Required]
+        [Display(Name = "Color")]
         public string VehicleColor { get; set; }
 
 
         [Required]
         [DataType(DataType.Date)]
+        [Display(Name = "Registration Number")]
         public string VehicleRegNum { get; set; }
 
 
         [Required]
+        [Display(Name = "Registration Date")]
         public DateTime VehicleRegDate { get; set; }
 
     }

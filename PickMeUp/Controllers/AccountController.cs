@@ -39,7 +39,7 @@ namespace PickMeUp.Controllers
             RoleManager = roleManager;
 
         }
-        public AccountController(IVehicleTypeRepository vehicleTypeRepository, IDriverRepository driverRepository, IPassengerRepository passengerRepository,IVehicleRepository vehicleRepository)
+        public AccountController(IVehicleTypeRepository vehicleTypeRepository, IDriverRepository driverRepository, IPassengerRepository passengerRepository, IVehicleRepository vehicleRepository)
         {
             _vehicleTypeRepository = vehicleTypeRepository;
             _driverRepository = driverRepository;
@@ -231,9 +231,9 @@ namespace PickMeUp.Controllers
             var vehicleTypesList = _vehicleTypeRepository.GetAll();
             foreach (var vehicleType in vehicleTypesList)
             {
-                vehicleTypes.Add(new SelectListItem() { Value = vehicleType.Name, Text = vehicleType.Name });
+                vehicleTypes.Add(new SelectListItem() { Value = vehicleType.Name , Text = vehicleType.Name });
             }
-            ViewBag.Roles = vehicleTypes;
+            ViewBag.VehicleTypes = vehicleTypes;
 
 
             return View();
@@ -250,31 +250,35 @@ namespace PickMeUp.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Username, Email = model.Email, Fullname = model.Fullname };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    result = await UserManager.AddToRoleAsync(user.Id, "Driver");
+                    var user = new User { UserName = model.Username, Email = model.Email, Fullname = model.Fullname };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        result = await UserManager.AddToRoleAsync(user.Id, "Driver");
 
-                    Driver driver = new Driver() { DrivingLicence = model.DrivingLicence, User = user };
-                    _driverRepository.Add(driver);
-                    Vehicle vehicle = new Vehicle() { Driver = driver, ModelName = model.VehicleModelName, CompanyName = model.VehicleCompanyName, Color = model.VehicleColor, RegNumber = model.VehicleRegNum, RegDate = model.VehicleRegDate, VehicleType = _vehicleTypeRepository.GetVehicleByName(model.VehicleType) };
-                    _vehicleRepository.Add(vehicle);
+                        Driver driver = new Driver() { DrivingLicence = model.DrivingLicence, UserId = user.Id, Status = Status.Availble, TotalRides = 0, Earnings = 0};
+                        _driverRepository.Add(driver);
 
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    //await _dirverRepo.Add(driver);
-                    //await _vehicleRepo.Add(vehicle);
+                        Vehicle vehicle = new Vehicle() { DriverId = driver.Id, ModelName = model.VehicleModelName, CompanyName = model.VehicleCompanyName, Color = model.VehicleColor, RegNumber = model.VehicleRegNum, RegDate = model.VehicleRegDate, VehicleType = _vehicleTypeRepository.GetVehicleByName(model.VehicleType)};
+                        _vehicleRepository.Add(vehicle);
 
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    return RedirectToAction("Index", "Drivers");
-                }
+                        //await _dirverRepo.Add(driver);
+                        //await _vehicleRepo.Add(vehicle);
+
+                        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                        return RedirectToAction("Index", "Drivers");
+                    }
+                
                 AddErrors(result);
+                
             }
 
             // If we got this far, something failed, redisplay form

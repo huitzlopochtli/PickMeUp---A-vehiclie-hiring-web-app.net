@@ -455,6 +455,7 @@ namespace PickMeUp.Controllers
             model.CompanyName = vehicle.CompanyName;
             model.Color = vehicle.Color;
             model.RegDate = vehicle.RegDate;
+            //model.VehicleType = vehicle.VehicleType;
 
 
             return View(model);

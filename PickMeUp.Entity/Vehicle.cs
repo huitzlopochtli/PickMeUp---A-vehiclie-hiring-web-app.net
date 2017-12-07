@@ -31,6 +31,6 @@ namespace PickMeUp.Entity
 
         public VehicleType VehicleType { get; set; }
         [ForeignKey("VehicleType")]
-        public int VehicleId { get; set; }
+        public int VehicleTypeId { get; set; }
     }
 }

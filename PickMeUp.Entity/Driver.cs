@@ -11,7 +11,6 @@ namespace PickMeUp.Entity
     public class Driver
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int  Id { get; set; }
 
         [Index(IsUnique = true)]
@@ -32,8 +31,8 @@ namespace PickMeUp.Entity
 
     public enum Status
     {
-        Availble = 1,
-        Driving = 0,
+        Availble = 0,
+        Driving = 1,
         Unavailable = 2
     }
 }
