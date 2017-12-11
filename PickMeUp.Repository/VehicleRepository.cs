@@ -10,15 +10,16 @@ namespace PickMeUp.Repository
 {
     public class VehicleRepository : Repository<Vehicle>, IVehicleRepository
     {
+
         public Vehicle GetVehicleByDriver(Driver driver)
         {
-            var vehicle = Context.Vehicles.Where(v => v.Driver == driver).SingleOrDefault();
+            var vehicle = Context.Vehicles.Include("VehicleType").Where(v => v.Driver == driver).SingleOrDefault();
             return vehicle;
         }
 
         public Vehicle GetVehicleByDriverId(int id)
         {
-            var vehicle = Context.Vehicles.Where(v => v.DriverId == id).SingleOrDefault();
+            var vehicle = Context.Vehicles.Include("VehicleType").Where(v => v.DriverId == id).SingleOrDefault();
             return vehicle;
         }
     }

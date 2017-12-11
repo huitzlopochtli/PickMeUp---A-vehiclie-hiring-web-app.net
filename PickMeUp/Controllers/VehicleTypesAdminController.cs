@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace PickMeUp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class VehicleTypesController : Controller
     {
         private IVehicleTypeRepository _vehicleTypeRepository;

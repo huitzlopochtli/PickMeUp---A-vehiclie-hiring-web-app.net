@@ -260,7 +260,7 @@ namespace PickMeUp.Controllers
                         _driverRepository.Add(driver);
 
 
-                        Vehicle vehicle = new Vehicle() { DriverId = driver.Id, ModelName = model.VehicleModelName, CompanyName = model.VehicleCompanyName, Color = model.VehicleColor, RegNumber = model.VehicleRegNum, RegDate = model.VehicleRegDate, VehicleType = _vehicleTypeRepository.GetVehicleByName(model.VehicleType)};
+                        Vehicle vehicle = new Vehicle() { DriverId = driver.Id, ModelName = model.VehicleModelName, CompanyName = model.VehicleCompanyName, Color = model.VehicleColor, RegNumber = model.VehicleRegNum, RegDate = model.VehicleRegDate, VehicleTypeId = _vehicleTypeRepository.GetVehicleByName(model.VehicleType).Id };
                         _vehicleRepository.Add(vehicle);
 
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);

@@ -53,7 +53,12 @@ namespace PickMeUp
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<AccountController>(new InjectionConstructor());
             container.RegisterType<AccountController>(new InjectionConstructor(typeof(IVehicleTypeRepository), typeof(IDriverRepository), typeof(IPassengerRepository), typeof(IVehicleRepository)));
+
+
             container.RegisterType<ManageController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor(typeof(IDriverRepository), typeof(IVehicleRepository), typeof(IVehicleTypeRepository)));
+
+
             container.RegisterType<RoleController>(new InjectionConstructor());
 
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());

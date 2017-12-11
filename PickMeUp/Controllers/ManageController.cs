@@ -11,6 +11,7 @@ using PickMeUp.Entity;
 using PickMeUp.Data;
 using Microsoft.AspNet.Identity.EntityFramework;
 using PickMeUp.Repository.Interfaces;
+using System.Collections.Generic;
 
 namespace PickMeUp.Controllers
 {
@@ -21,17 +22,23 @@ namespace PickMeUp.Controllers
         private ApplicationUserManager _userManager;
         private IDriverRepository _driverRepository;
         private IVehicleRepository _vehicleRepository;
+        private IVehicleTypeRepository _vehicleTypeRepository;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IDriverRepository driverRepository, IVehicleRepository vehicleRepository)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+        }
+
+        public ManageController(IDriverRepository driverRepository, IVehicleRepository vehicleRepository, IVehicleTypeRepository vehicleTypeRepository)
+        {
             _driverRepository = driverRepository;
             _vehicleRepository = vehicleRepository;
+            _vehicleTypeRepository = vehicleTypeRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -455,7 +462,16 @@ namespace PickMeUp.Controllers
             model.CompanyName = vehicle.CompanyName;
             model.Color = vehicle.Color;
             model.RegDate = vehicle.RegDate;
-            //model.VehicleType = vehicle.VehicleType;
+            model.RegNumber = vehicle.RegNumber;
+            List<SelectListItem> vehicleTypesList = new List<SelectListItem>();
+            var vehicleTypes = _vehicleTypeRepository.GetAll();
+            foreach (var vehicleType in vehicleTypes)
+            {
+                vehicleTypesList.Add(new SelectListItem() { Value = vehicleType.Name, Text = vehicleType.Name });
+            }
+            ViewBag.VehicleTypesList = vehicleTypesList;
+
+            model.VehicleType = vehicle.VehicleType.Name;
 
 
             return View(model);
@@ -485,7 +501,48 @@ namespace PickMeUp.Controllers
                 vehicle.CompanyName = model.CompanyName;
                 vehicle.RegNumber = model.RegNumber;
                 vehicle.RegDate = model.RegDate;
+                vehicle.VehicleTypeId = _vehicleTypeRepository.GetVehicleByName(model.VehicleType).Id;
+
                 _vehicleRepository.Update(vehicle);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassengerDetails()
+        {
+            ChangePassengerDetailsViewModel model = new ChangePassengerDetailsViewModel();
+
+            User user = System.Web.HttpContext.Current.GetOwinContext()
+                        .GetUserManager<ApplicationUserManager>()
+                        .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            model.Id = user.Id;
+            model.UserName = user.UserName;
+            model.Email = user.Email;
+            model.Fullname = user.Fullname;
+            model.PhoneNumber = user.PhoneNumber;
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassengerDetails(ChangePassengerDetailsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = UserManager.FindById(model.Id);
+
+                user.UserName = model.UserName;
+                user.Email = model.Email;
+                user.Fullname = model.Fullname;
+                user.PhoneNumber = model.PhoneNumber;
+
+                UserManager.Update(user);
 
                 return RedirectToAction("Index");
             }

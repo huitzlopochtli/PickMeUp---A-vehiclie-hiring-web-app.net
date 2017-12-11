@@ -291,6 +291,10 @@
     <Content Include="Views\Shared\_changeAccountDetails.cshtml" />
     <Content Include="Views\Manage\ChangeAdminDetails.cshtml" />
     <Content Include="Views\Shared\_adminVeiw.cshtml" />
+    <Content Include="Views\Shared\_DriverVeiw.cshtml" />
+    <Content Include="Views\Shared\_passengerVeiw.cshtml" />
+    <Content Include="Views\Manage\ChangeDriverDetails.cshtml" />
+    <Content Include="Views\Manage\ChangePassengerDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

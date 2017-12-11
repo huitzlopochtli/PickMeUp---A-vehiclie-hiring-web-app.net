@@ -177,8 +177,7 @@ namespace PickMeUp.Models
 
         
         public int VehicleId { get; set; }
-
-        [Required]
+        
         [Display(Name = "Vechicle Type")]
         public string VehicleType { get; set; }
 
@@ -205,5 +204,39 @@ namespace PickMeUp.Models
         [DataType(DataType.Date)]
         public DateTime RegDate { get; set; }
 
+    }
+
+    public class ChangePassengerDetailsViewModel
+    {
+        public ChangePassengerDetailsViewModel()
+        {
+
+        }
+        public ChangePassengerDetailsViewModel(User user)
+        {
+            Id = user.Id;
+            UserName = user.UserName;
+            Email = user.Email;
+            Fullname = user.Fullname;
+            PhoneNumber = user.PhoneNumber;
+        }
+
+        public string Id { get; set; }
+        
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Email Address")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Full Name")]
+        public string Fullname { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+        
     }
 }
