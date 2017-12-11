@@ -17,6 +17,10 @@ namespace PickMeUp.Entity
 
         public bool Payed { get; set; }
 
+        public PaymentType PaymentType { get; set; }
+        [ForeignKey("PaymentType")]
+        public int PaymentTypeId { get; set; }
+
         public Passenger Passenger { get; set; }
         [ForeignKey("Passenger")]
         public int PassengerId { get; set; }

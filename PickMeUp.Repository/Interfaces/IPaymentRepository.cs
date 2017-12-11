@@ -9,5 +9,6 @@ namespace PickMeUp.Repository.Interfaces
 {
     public interface IPaymentRepository : IRepository<Payment>
     {
+        IEnumerable<Payment> GetAllWithPaymentType();
     }
 }

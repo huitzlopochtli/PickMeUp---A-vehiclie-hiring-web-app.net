@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace PickMeUp.Repository
 {
-    public class PaymentRepository : Repository<Payment> , IPaymentRepository
+    public class PaymentRepository : Repository<Payment>, IPaymentRepository
     {
+        public IEnumerable<Payment> GetAllWithPaymentType()
+        {
+            return Context.Payments.Include("PaymentType").ToList();
+        }
     }
 }

@@ -114,6 +114,10 @@
     <Compile Include="Migrations\201712072126371_Test1.Designer.cs">
       <DependentUpon>201712072126371_Test1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712111721116_AddedPaymentTypestoPayment.cs" />
+    <Compile Include="Migrations\201712111721116_AddedPaymentTypestoPayment.Designer.cs">
+      <DependentUpon>201712111721116_AddedPaymentTypestoPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712072126371_Test1.resx">
       <DependentUpon>201712072126371_Test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111721116_AddedPaymentTypestoPayment.resx">
+      <DependentUpon>201712111721116_AddedPaymentTypestoPayment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
