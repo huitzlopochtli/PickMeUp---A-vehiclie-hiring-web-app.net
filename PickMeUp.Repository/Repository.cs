@@ -14,7 +14,7 @@ namespace PickMeUp.Repository
         internal readonly ApplicationDbContext Context = new ApplicationDbContext();
 
 
-        public TEntity Get(int id)
+        public TEntity Get(int? id)
         {
             return Context.Set<TEntity>().Find(id);
         }
@@ -51,7 +51,7 @@ namespace PickMeUp.Repository
             Context.SaveChanges();
         }
 
-        public void Remove(int id)
+        public void Remove(int? id)
         {
             var entity = Get(id);
             Context.Set<TEntity>().Remove(entity);

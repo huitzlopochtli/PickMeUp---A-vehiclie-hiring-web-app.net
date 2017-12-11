@@ -29,6 +29,8 @@
                         {
                             <li>@Html.ActionLink("Roles", "Index", "Role")</li>
                             <li>@Html.ActionLink("Vehicle Types", "Index", "VehicleTypes")</li>
+                            <li>@Html.ActionLink("Payment Types", "Index", "PaymentTypes")</li>
+
                         }
 
                         else if (HttpContext.Current.User.IsInRole("Driver"))

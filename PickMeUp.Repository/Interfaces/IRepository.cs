@@ -9,7 +9,7 @@ namespace PickMeUp.Repository.Interfaces
 {
     public interface IRepository<TEntity> : IDisposable where TEntity : class
     {
-        TEntity Get(int id);
+        TEntity Get(int? id);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
@@ -19,7 +19,7 @@ namespace PickMeUp.Repository.Interfaces
         void Update(TEntity entries);
 
 
-        void Remove(int id);
+        void Remove(int? id);
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
     }

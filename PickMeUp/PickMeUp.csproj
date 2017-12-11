@@ -208,6 +208,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PassengersController.cs" />
+    <Compile Include="Controllers\PaymentTypesController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Controllers\VehicleTypesAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -295,6 +296,11 @@
     <Content Include="Views\Shared\_passengerVeiw.cshtml" />
     <Content Include="Views\Manage\ChangeDriverDetails.cshtml" />
     <Content Include="Views\Manage\ChangePassengerDetails.cshtml" />
+    <Content Include="Views\PaymentTypes\Create.cshtml" />
+    <Content Include="Views\PaymentTypes\Delete.cshtml" />
+    <Content Include="Views\PaymentTypes\Details.cshtml" />
+    <Content Include="Views\PaymentTypes\Edit.cshtml" />
+    <Content Include="Views\PaymentTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
