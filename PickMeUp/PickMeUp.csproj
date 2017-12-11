@@ -219,6 +219,7 @@
     <Compile Include="Models\Admin\RoleViewModel.cs" />
     <Compile Include="Models\Admin\VehicleTypeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Passenger\PassengersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -292,9 +293,9 @@
     <Content Include="Views\VehicleTypes\Delete.cshtml" />
     <Content Include="Views\Shared\_changeAccountDetails.cshtml" />
     <Content Include="Views\Manage\ChangeAdminDetails.cshtml" />
-    <Content Include="Views\Shared\_adminVeiw.cshtml" />
+    <Content Include="Views\Shared\_adminView.cshtml" />
     <Content Include="Views\Shared\_DriverVeiw.cshtml" />
-    <Content Include="Views\Shared\_passengerVeiw.cshtml" />
+    <Content Include="Views\Shared\_passengerView.cshtml" />
     <Content Include="Views\Manage\ChangeDriverDetails.cshtml" />
     <Content Include="Views\Manage\ChangePassengerDetails.cshtml" />
     <Content Include="Views\PaymentTypes\Create.cshtml" />
@@ -303,11 +304,11 @@
     <Content Include="Views\PaymentTypes\Edit.cshtml" />
     <Content Include="Views\PaymentTypes\Index.cshtml" />
     <Content Include="Views\Payments\Index.cshtml" />
+    <Content Include="Views\Passengers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Drivers\" />
-    <Folder Include="Views\Passengers\" />
     <Folder Include="Views\VehicleTypesAdmin\" />
   </ItemGroup>
   <ItemGroup>

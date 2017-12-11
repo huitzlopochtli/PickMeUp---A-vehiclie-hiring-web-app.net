@@ -4,17 +4,17 @@
 @{
     if (HttpContext.Current.User.IsInRole("Admin"))
     {
-        @Html.Partial("_adminVeiw")
+        @Html.Partial("_adminView")
     }
 
     else if (HttpContext.Current.User.IsInRole("Driver"))
     {
-        @Html.Partial("_DriverVeiw")
+        @Html.Partial("_DriverView")
     }
 
     else if (HttpContext.Current.User.IsInRole("Passenger"))
     {
-        @Html.Partial("_passengerVeiw")
+        Response.Redirect("~/Passengers/Index");
     }
 
     else
