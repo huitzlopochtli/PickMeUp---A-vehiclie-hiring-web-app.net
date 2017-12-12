@@ -9,5 +9,6 @@ namespace PickMeUp.Repository.Interfaces
 {
     public interface IPassengerRepository : IRepository<Passenger>
     {
+        Passenger GetPassengerByUser(string userId);
     }
 }

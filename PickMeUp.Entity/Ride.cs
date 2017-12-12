@@ -13,14 +13,14 @@ namespace PickMeUp.Entity
 
         public Driver Driver { get; set; }
         [ForeignKey("Driver")]
-        public int DriverId { get; set; }
+        public int? DriverId { get; set; }
 
         public Passenger Passenger { get; set; }
         [ForeignKey("Passenger")]
         public int PassengerId { get; set; }
 
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         public string StartLocation { get; set; }
         public string EndLocation { get; set; }

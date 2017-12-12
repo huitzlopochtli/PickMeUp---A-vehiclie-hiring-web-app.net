@@ -71,6 +71,8 @@ namespace PickMeUp
             container.RegisterType<IPassengerRepository, PassengerRepository>();
             container.RegisterType<IPaymentTypeRepository, PaymentTypeRepository>();
             container.RegisterType<IPaymentRepository, PaymentRepository>();
+            container.RegisterType<IRideRepository, RideRepository>();
+
 
         }
     }

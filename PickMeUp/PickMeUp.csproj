@@ -305,6 +305,7 @@
     <Content Include="Views\PaymentTypes\Index.cshtml" />
     <Content Include="Views\Payments\Index.cshtml" />
     <Content Include="Views\Passengers\Index.cshtml" />
+    <Content Include="Views\Passengers\RideOnGoing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
