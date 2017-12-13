@@ -118,6 +118,7 @@ namespace PickMeUp.Controllers
                     PassengerId = passenger.Id,
                     RideStatus = RideStatus.NotAccepted,
                     Payment = payment,
+                    VehicleTypeId = _vehicleTypeRepository.Find(v => v.Name == model.VehicleType).SingleOrDefault().Id
                 };
 
                 _paymentRepository.Add(payment);

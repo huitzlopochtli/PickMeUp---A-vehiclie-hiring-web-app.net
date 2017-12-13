@@ -1,0 +1,50 @@
+﻿@model PickMeUp.Models.Driver.DriversViewModel
+
+@{
+    ViewBag.Title = "ConfirmAccept";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ConfirmAccept</h2>
+
+<div>
+    <h4>DriversViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Confirm Accept", "StartRide", new { id = Model.Id @class="btn btn-success"})
+</p>

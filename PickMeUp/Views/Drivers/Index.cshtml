@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PickMeUp.Models.Driver.DriversViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_DriverView.cshtml";
+}
+
+<h2>List of all rides for you</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td class="btn btn-success">
+            @Html.ActionLink("Accept", "Accept", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

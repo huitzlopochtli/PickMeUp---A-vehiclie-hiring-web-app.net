@@ -1,0 +1,52 @@
+﻿@model PickMeUp.Models.Driver.DriversViewModel
+
+@{
+    ViewBag.Title = "ConfirmFinishRide";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Confirm Finish Ride</h2>
+@Html.BeginForm(){
+@Html.AntiForgeryToken()
+@Html.HiddenFor(model => model.Id)
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+    </dl>
+    <div>
+        <input type="submit" value="Confirm" class="btn btn-success"/>
+    </div>
+    
+</div>
+}

@@ -126,6 +126,10 @@
     <Compile Include="Migrations\201712120342309_MadeDriverToNullToRide.Designer.cs">
       <DependentUpon>201712120342309_MadeDriverToNullToRide.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712120417107_AddedVehicleTypesToRide.cs" />
+    <Compile Include="Migrations\201712120417107_AddedVehicleTypesToRide.Designer.cs">
+      <DependentUpon>201712120417107_AddedVehicleTypesToRide.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712120342309_MadeDriverToNullToRide.resx">
       <DependentUpon>201712120342309_MadeDriverToNullToRide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712120417107_AddedVehicleTypesToRide.resx">
+      <DependentUpon>201712120417107_AddedVehicleTypesToRide.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

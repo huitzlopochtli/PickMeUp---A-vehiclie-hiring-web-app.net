@@ -19,7 +19,7 @@ namespace PickMeUp.Repository
 
         public Driver GetDriverByUserId(string UserId)
         {
-            var driver = Context.Drivers.Where(d => d.UserId == UserId).SingleOrDefault();
+            var driver = Context.Drivers.Where(d => d.UserId.Equals(UserId)).SingleOrDefault();
             return driver;
         }
     }

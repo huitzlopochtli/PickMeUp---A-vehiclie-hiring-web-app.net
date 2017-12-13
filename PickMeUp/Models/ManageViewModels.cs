@@ -127,7 +127,7 @@ namespace PickMeUp.Models
 
         }
 
-        public ChangeDriverDetailsViewModel(User user , Driver driver, Vehicle vehicle)
+        public ChangeDriverDetailsViewModel(User user , PickMeUp.Entity.Driver driver, Vehicle vehicle)
         {
             Id = user.Id;
             DriverId = driver.Id;

@@ -31,6 +31,10 @@ namespace PickMeUp.Entity
 
         public RideStatus RideStatus { get; set; }
 
+        public VehicleType VehicleType { get; set; }
+        [ForeignKey("VehicleType")]
+        public int? VehicleTypeId { get; set; }
+
     }
 
     public enum RideStatus

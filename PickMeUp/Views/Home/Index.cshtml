@@ -9,7 +9,7 @@
 
     else if (HttpContext.Current.User.IsInRole("Driver"))
     {
-        @Html.Partial("_DriverView")
+        Response.Redirect("~/Drivers/Index");
     }
 
     else if (HttpContext.Current.User.IsInRole("Passenger"))

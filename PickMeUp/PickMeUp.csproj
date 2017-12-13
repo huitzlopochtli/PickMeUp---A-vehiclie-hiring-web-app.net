@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PickMeUp</RootNamespace>
     <AssemblyName>PickMeUp</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,17 +59,15 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -109,6 +108,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Unity.Abstractions, Version=2.3.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.Abstractions.2.3.1\lib\net45\Unity.Abstractions.dll</HintPath>
     </Reference>
@@ -218,6 +218,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin\RoleViewModel.cs" />
     <Compile Include="Models\Admin\VehicleTypeViewModel.cs" />
+    <Compile Include="Models\Driver\DriversViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Passenger\PassengersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -294,7 +295,7 @@
     <Content Include="Views\Shared\_changeAccountDetails.cshtml" />
     <Content Include="Views\Manage\ChangeAdminDetails.cshtml" />
     <Content Include="Views\Shared\_adminView.cshtml" />
-    <Content Include="Views\Shared\_DriverVeiw.cshtml" />
+    <Content Include="Views\Shared\_DriverView.cshtml" />
     <Content Include="Views\Shared\_passengerView.cshtml" />
     <Content Include="Views\Manage\ChangeDriverDetails.cshtml" />
     <Content Include="Views\Manage\ChangePassengerDetails.cshtml" />
@@ -306,10 +307,15 @@
     <Content Include="Views\Payments\Index.cshtml" />
     <Content Include="Views\Passengers\Index.cshtml" />
     <Content Include="Views\Passengers\RideOnGoing.cshtml" />
+    <Content Include="Views\Drivers\Index.cshtml" />
+    <Content Include="Views\Drivers\Accept.cshtml" />
+    <Content Include="Views\Drivers\FinishRide.cshtml" />
+    <Content Include="Views\Drivers\StartRide.cshtml" />
+    <Content Include="Views\Drivers\ConfirmFinishRide.cshtml" />
+    <Content Include="Views\Drivers\ConfirmAccept.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Drivers\" />
     <Folder Include="Views\VehicleTypesAdmin\" />
   </ItemGroup>
   <ItemGroup>
