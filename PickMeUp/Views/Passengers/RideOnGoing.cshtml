@@ -1,9 +1,128 @@
-﻿
+﻿@model PickMeUp.Entity.Ride
+
 @{
-    ViewBag.Title = "RideOnGoing";
-    Layout = "~/Views/Shared/_passengerView.cshtml";
+    ViewBag.Title = "Accept";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>RideOnGoing</h2>
+<h2>On Going Ride : </h2>
+@if (Model != null)
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.StartLocation)
+    @Html.HiddenFor(model => model.EndLocation)
+    @Html.HiddenFor(model => model.Id)
 
-<p>Soon some of our best drivers will contact with you. Thank you for using our service.</p>
+    <div class="col-md-12" onload="GetRoute()">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.StartLocation)
+                :
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.StartLocation)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.EndLocation)
+                :
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.EndLocation)
+            </div>
+        </div>
+
+
+
+        <div class="row" style="min-height:0px">
+            <div class="col-md-5">
+                <div id="dvMap" style="max-height:500px; min-height:500px; width:auto"></div>
+            </div>
+            <div class="col-md-5">
+                <div id="dvPanel" style="width: auto; height: 500px"></div>
+            </div>
+            <div class="row col-md-2 help-block">
+                @*<input type="submit" value="Finish ride" class="btn btn-success" />*@
+                @Html.ActionLink("Cancel Ride", "CancelRide", new { id = Model.Id }, new { id = Model.Id, @class = "btn btn-success" })
+                @*@Html.ActionLink("Cancel Ride", "CancelRide",null, new { id = Model.Id, @class = "btn btn-danger" })*@
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCiBz3TAUhgB2cXAZBztFNLZy593SpJLOk"></script>
+    <script type="text/javascript">
+
+
+        var source, destination;
+        var directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+        var directionsService = new google.maps.DirectionsService();
+
+
+
+
+
+
+        var dhaka = new google.maps.LatLng(23.794887, 90.402476);
+        var mapOptions = {
+            zoom: 13,
+            center: dhaka
+        };
+        map = new google.maps.Map(document.getElementById('dvMap'), mapOptions);
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('dvPanel'));
+
+        //*********DIRECTIONS AND ROUTE**********************//
+        source = document.getElementById("StartLocation").value;
+        destination = document.getElementById("EndLocation").value;
+
+        var request = {
+            origin: source,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+        directionsService.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            }
+        });
+
+        //*********DISTANCE AND DURATION**********************//
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
+            origins: [source],
+            destinations: [destination],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: false,
+            avoidTolls: false
+        }, function (response, status) {
+            if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                var distance = response.rows[0].elements[0].distance.text;
+
+                var duration = response.rows[0].elements[0].duration.text;
+                var Distance = document.getElementById("distance");
+                Distance.innerHTML = "";
+                Distance.innerHTML += "Distance: " + distance + "<br />";
+                Distance.innerHTML += "Duration:" + duration;
+
+                document.getElementById('Distance').value = parseFloat(distance);
+
+            } else {
+                alert("Unable to find the distance via road.");
+            }
+        });
+
+    </script>
+
+}
+else{
+    <p>Currently you don't have any rides to keep track of. 
+        @Html.ActionLink("Click Here ", "Index")
+    to request a ride.
+    </p>
+}

@@ -78,8 +78,16 @@ namespace PickMeUp.Controllers
                 PaymentTypesList.Add(new SelectListItem() { Value = pT.Name, Text = pT.Name });
 
             ViewBag.PaymentTypes = PaymentTypesList;
-            
-            
+
+            User user = System.Web.HttpContext.Current.GetOwinContext()
+                            .GetUserManager<ApplicationUserManager>()
+                            .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            Passenger passenger = _passengerRepository.GetPassengerByUser(user.Id);
+            var ride = _rideRepository.Find(r => r.PassengerId == passenger.Id && (r.RideStatus == RideStatus.OnGoing || r.RideStatus == RideStatus.NotAccepted)).FirstOrDefault();
+            if (ride != null)
+                ViewBag.Msg = "Soon some of our best drivers will contact with you. Thank you for using our service.";
+
 
             return View(new PassengersViewModel());
         }
@@ -156,7 +164,51 @@ namespace PickMeUp.Controllers
 
         public ActionResult RideOnGoing()
         {
-            return View();
+            ViewBag.Msg = null;
+               User user = System.Web.HttpContext.Current.GetOwinContext()
+                            .GetUserManager<ApplicationUserManager>()
+                            .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            Passenger passenger = _passengerRepository.GetPassengerByUser(user.Id);
+
+            var ride = _rideRepository.Find(r => r.PassengerId == passenger.Id && (r.RideStatus == RideStatus.OnGoing || r.RideStatus == RideStatus.NotAccepted)).FirstOrDefault();
+            if(ride== null)
+                ViewBag.Msg = "Soon some of our best drivers will contact with you. Thank you for using our service.";
+
+
+            return View(ride);
+        }
+
+        public ActionResult CancelRide(int? id)
+        {
+            var ride = _rideRepository.Get(id);
+            ride.RideStatus = RideStatus.Cancelled;
+            ride.StartTime = System.DateTime.Now;
+            ride.EndTime = System.DateTime.Now;
+            _rideRepository.Update(ride);
+
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult AllRides()
+        {
+            User user = System.Web.HttpContext.Current.GetOwinContext()
+                            .GetUserManager<ApplicationUserManager>()
+                            .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            Passenger passenger = _passengerRepository.GetPassengerByUser(user.Id);
+            var rides = _rideRepository.GetAllRidesForPassenger(passenger.Id);
+            ViewBag.TotalAmount = 0;
+
+
+            foreach(var r in rides)
+            {
+                if (r.RideStatus == RideStatus.Finished)
+                    ViewBag.TotalAmount += r.Payment.Amount;
+            }
+
+            return View(rides);
         }
 
 

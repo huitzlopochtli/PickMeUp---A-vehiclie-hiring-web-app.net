@@ -314,6 +314,8 @@
     <Content Include="Views\Drivers\ConfirmFinishRide.cshtml" />
     <Content Include="Views\Drivers\ConfirmAccept.cshtml" />
     <Content Include="Views\Drivers\AcceptedRide.cshtml" />
+    <Content Include="Views\Drivers\AllRides.cshtml" />
+    <Content Include="Views\Passengers\AllRides.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -25,6 +25,9 @@ namespace PickMeUp.Repository.Interfaces
 
         Ride GetWithPayment(int? id);
 
+        IEnumerable<Ride> GetAllRidesForDriver(int? id);
+        IEnumerable<Ride> GetAllRidesForPassenger(int? id);
+
         //Ride RequestRideByPassenger(int passengerId, string startLoc, string endLoc, VehicleType vehicleType);
         //RideStatus TrackRide(int passengerId);
     }

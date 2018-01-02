@@ -35,12 +35,13 @@
 
                         else if (HttpContext.Current.User.IsInRole("Driver"))
                         {
-
+                            <li>@Html.ActionLink("All Rides", "AllRides", "Drivers")</li>
                         }
 
                         else if (HttpContext.Current.User.IsInRole("Passenger"))
                         {
-
+                            <li>@Html.ActionLink("Track Ride", "RideOnGoing", "Passengers")</li>
+                            <li>@Html.ActionLink("All Rides", "AllRides", "Passengers")</li>
                         }
                     }
 

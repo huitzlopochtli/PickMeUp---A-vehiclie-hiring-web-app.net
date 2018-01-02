@@ -82,6 +82,8 @@ namespace PickMeUp.Controllers
 
             Ride ride = _rideRepository.Get(model.Id);
 
+            model.Amount = _paymentRepository.Get(ride.PaymentId).Amount;
+
             ride.DriverId = driver.Id;
             ride.RideStatus = RideStatus.OnGoing;
             ride.StartTime = System.DateTime.Now;
@@ -102,6 +104,7 @@ namespace PickMeUp.Controllers
             Ride ride = _rideRepository.Get(id);
             ride.RideStatus = RideStatus.Finished;
             ride.EndTime = System.DateTime.Now;
+            _rideRepository.Update(ride);
 
             Driver driver = _driverRepository.GetDriverByUserId(user.Id);
             driver.Status = Status.Availble;
@@ -116,6 +119,24 @@ namespace PickMeUp.Controllers
 
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AllRides()
+        {
+            Driver driver = _driverRepository.GetDriverByUserId(user.Id);
+
+
+            var rides = _rideRepository.GetAllRidesForDriver(driver.Id);
+            ViewBag.TotalAmount = 0;
+
+
+            foreach (var r in rides)
+            {
+                if (r.RideStatus == RideStatus.Finished)
+                    ViewBag.TotalAmount += r.Payment.Amount;
+            }
+
+            return View(rides);
         }
     }
 }

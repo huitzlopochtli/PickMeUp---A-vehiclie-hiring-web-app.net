@@ -45,6 +45,7 @@ namespace PickMeUp.Repository
             Context.SaveChanges();
         }
 
+
         public IEnumerable<Ride> GetRidesForDriver(RideStatus rideStatus, int vehicleTypeId)
         {
             return Context.Rides.Include("Payment").Where(vt => vt.RideStatus == rideStatus && vt.VehicleTypeId == vehicleTypeId).ToList();
@@ -91,6 +92,18 @@ namespace PickMeUp.Repository
             Context.Rides.Attach(ride);
             Context.Entry(ride).State = EntityState.Modified;
             Context.SaveChanges();
+        }
+        
+
+        IEnumerable<Ride> IRideRepository.GetAllRidesForDriver(int? id)
+        {
+            return Context.Rides.Include("Payment").Where(r => r.DriverId == id).OrderByDescending(e => e.EndTime);
+        }
+
+
+        public IEnumerable<Ride> GetAllRidesForPassenger(int? id)
+        {
+            return Context.Rides.Include("Payment").Where(r => r.PassengerId == id).OrderByDescending(e => e.EndTime);
         }
     }
 }
