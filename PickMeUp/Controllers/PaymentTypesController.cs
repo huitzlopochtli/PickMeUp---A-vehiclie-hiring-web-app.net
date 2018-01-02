@@ -30,7 +30,7 @@ namespace PickMeUp.Controllers
         // GET: PaymentTypes
         public ActionResult Index()
         {
-            return View(_paymentTypeRepository.GetAll());
+            return View();
         }
 
         // GET: PaymentTypes/Details/5
