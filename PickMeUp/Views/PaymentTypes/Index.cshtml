@@ -10,32 +10,80 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table id="table" class="table table-bordered table-hover col-md-10">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody></tbody>
 
 </table>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-<script>
-    
-</script>
+<div id="editPanel"></div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#table").DataTable({
+                ajax: {
+                    url: "http://localhost:58022/api/PaymentTypes/",
+                    dataSrc: ""
+                },
+
+                columns: [
+                    {
+                        data: "Name",
+                        render: function (data, type, paymentType) {
+                            return "<p>" +
+                                data +
+                                "</p>";
+                        }
+                    },
+                    {
+                        data: "Id",
+                        render: function (data, type, paymentType) {
+                            return '<a href=\'http://localhost:64722/PaymentTypes/Edit/' + data + "'>Edit</a>" +
+
+                                " |<button class='btn-link delete' data-item-id=" +
+                                data +
+                                ">Delete</button>";
+                        }
+                    }
+                ]
+
+            });
+            //alert();
+        });
+
+        $("#table").on("click",
+            ".delete",
+            function () {
+                var button = $(this);
+
+
+                bootbox.confirm("Are you sure you want to delete this payment type?",
+                    function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "http://localhost:58022/api/PaymentTypes/" + button.attr("data-item-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    button.parents("tr").remove();
+                                    console.log("success");
+                                },
+
+                                error: function () {
+                                    console.log("error");
+                                }
+                            });
+                        }
+                    });
+
+            });
+
+
+    </script>
+}

@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>PaymentType</h4>
         <hr />
@@ -27,7 +27,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="button" id="btn" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -36,3 +36,34 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#btn").on("click",
+                function() {
+
+                    var pt = new Object();
+                    pt.Name = $("#Name").val();
+                    pt.Id = $("#Id").val();
+
+                    $.ajax({
+                        url: "http://localhost:58022/api/PaymentTypes/" + $("#Id").val(),
+                        type: "PUT",
+                        dataType: "application/json",
+                        data: pt,
+                        success: function(data, textStatus, xhr) {
+                            console.log(data);
+                            window.location.replace('http://localhost:64722/PaymentTypes/');
+                        },
+
+                        error: function() {
+                            console.log("Error");
+                        }
+                    });
+
+                });
+        });
+    </script>
+}

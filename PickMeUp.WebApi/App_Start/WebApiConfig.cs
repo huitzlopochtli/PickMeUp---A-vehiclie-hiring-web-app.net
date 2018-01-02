@@ -21,7 +21,7 @@ namespace PickMeUp.WebApi
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            EnableCorsAttribute cors = new EnableCorsAttribute("*","*","*");
+            EnableCorsAttribute cors = new EnableCorsAttribute("http://localhost:64722", "*","*");
             config.EnableCors(cors);
 
         }

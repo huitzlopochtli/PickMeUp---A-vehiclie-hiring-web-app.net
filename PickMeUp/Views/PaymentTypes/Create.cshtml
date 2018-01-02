@@ -25,7 +25,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="button" id="btn" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -34,3 +34,33 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#btn").on("click",
+                function () {
+
+                    var pt = new Object();
+                    pt.Name = $("#Name").val();
+
+                    $.ajax({
+                        url: "http://localhost:58022/api/PaymentTypes/",
+                        type: "POST",
+                        dataType: "application/json",
+                        data: pt,
+                        success: function () {
+                            console.log("Succ");
+                            window.location.replace('http://localhost:64722/PaymentTypes/');
+                        },
+
+                        error: function () {
+                            console.log("Error");
+                            window.location.replace('http://localhost:64722/PaymentTypes/');
+                        }
+                    });
+
+                });
+        });
+    </script>
+}

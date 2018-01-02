@@ -4,6 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using PickMeUp.Data;
 using PickMeUp.Entity;
@@ -11,6 +12,7 @@ using PickMeUp.Repository.Interfaces;
 
 namespace PickMeUp.WebApi.Controllers
 {
+    [EnableCorsAttribute("*","*","*")]
     public class PaymentTypesController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -27,11 +29,11 @@ namespace PickMeUp.WebApi.Controllers
         }
 
         // GET: api/PaymentTypes
-        public IEnumerable<PaymentType> GetPaymentType()
+        public IHttpActionResult GetPaymentType()
         {
             //return db.PaymentType;
 
-            return  _paymentTypeRepository.GetAll();
+            return  Ok(_paymentTypeRepository.GetAll());
         }
 
         // GET: api/PaymentTypes/5
