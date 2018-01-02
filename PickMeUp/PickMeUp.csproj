@@ -313,6 +313,7 @@
     <Content Include="Views\Drivers\StartRide.cshtml" />
     <Content Include="Views\Drivers\ConfirmFinishRide.cshtml" />
     <Content Include="Views\Drivers\ConfirmAccept.cshtml" />
+    <Content Include="Views\Drivers\AcceptedRide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

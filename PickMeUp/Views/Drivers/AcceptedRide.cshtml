@@ -6,51 +6,69 @@
 }
 
 <h2>Accept this ride : </h2>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.StartLocation)
-    @Html.HiddenFor(model => model.EndLocation)
-    @Html.HiddenFor(model => model.Id)
 
-    <div class="col-md-12" onload="GetRoute()">
-        <div class="row">
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.StartLocation)
-                :
-            </div>
-            <div class="col-md-2">
-                @Html.DisplayFor(model => model.StartLocation)
-            </div>
+@Html.AntiForgeryToken()
+@Html.HiddenFor(model => model.StartLocation)
+@Html.HiddenFor(model => model.EndLocation)
+@Html.HiddenFor(model => model.Id)
+
+<div class="col-md-12" onload="GetRoute()">
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.StartLocation)
+            :
         </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.EndLocation)
-                :
-            </div>
-            <div class="col-md-2">
-                @Html.DisplayFor(model => model.EndLocation)
-            </div>
+        <div class="col-md-2">
+            @Html.DisplayFor(model => model.StartLocation)
         </div>
-
-
-        <div class="row" style="min-height:0px">
-            <div class="col-md-5">
-                <div id="dvMap" style="max-height:500px; min-height:500px; width:auto"></div>
-            </div>
-            <div class="col-md-5">
-                <div id="dvPanel" style="width: auto; height: 500px"></div>
-            </div>
-            <div class="row col-md-2">
-                <input type="submit" value="Accept ride" class="btn btn-success" />
-                @*@Html.ActionLink("Accept Ride", "StartRide", "Drivers", null, new { id = Model.Id, @class = "btn btn-success" })*@
-            </div>
-        </div>
-
-
     </div>
-}
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.EndLocation)
+            :
+        </div>
+        <div class="col-md-2">
+            @Html.DisplayFor(model => model.EndLocation)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.Amount)
+            :
+        </div>
+        <div class="col-md-2">
+            @Html.DisplayFor(model => model.Amount)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.Payed)
+        </div>
+        <div class="col-md-2">
+            @Html.DisplayFor(model => model.Payed)
+        </div>
+    </div>
+
+
+    <div class="row" style="min-height:0px">
+        <div class="col-md-5">
+            <div id="dvMap" style="max-height:500px; min-height:500px; width:auto"></div>
+        </div>
+        <div class="col-md-5">
+            <div id="dvPanel" style="width: auto; height: 500px"></div>
+        </div>
+        <div class="row col-md-2 help-block">
+            @*<input type="submit" value="Finish ride" class="btn btn-success" />*@
+            @Html.ActionLink("Finish Ride", "FinishRide", new { id = Model.Id }, new { id = Model.Id, @class = "btn btn-success" })
+            @*@Html.ActionLink("Cancel Ride", "CancelRide",null, new { id = Model.Id, @class = "btn btn-danger" })*@
+        </div>
+    </div>
+
+
+</div>
+
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCiBz3TAUhgB2cXAZBztFNLZy593SpJLOk"></script>
 <script type="text/javascript">
 

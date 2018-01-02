@@ -68,6 +68,54 @@ namespace PickMeUp.Controllers
             return View(model);
         }
 
-        
+        [HttpPost]
+        public ActionResult Accept(DriversViewModel model)
+        {
+            Driver driver = _driverRepository.GetDriverByUserId(user.Id);
+
+            if(driver.Status == Status.Driving)
+            {
+                return RedirectToAction("Error");
+            }
+            driver.Status = Status.Driving;
+            _driverRepository.Update(driver);
+
+            Ride ride = _rideRepository.Get(model.Id);
+
+            ride.DriverId = driver.Id;
+            ride.RideStatus = RideStatus.OnGoing;
+            ride.StartTime = System.DateTime.Now;
+
+            _rideRepository.Update(ride);
+
+
+            return RedirectToAction("AcceptedRide", model);
+        }
+
+        public ActionResult AcceptedRide(DriversViewModel model)
+        {
+            return View(model);
+        }
+
+        public ActionResult FinishRide(int? id)
+        {
+            Ride ride = _rideRepository.Get(id);
+            ride.RideStatus = RideStatus.Finished;
+            ride.EndTime = System.DateTime.Now;
+
+            Driver driver = _driverRepository.GetDriverByUserId(user.Id);
+            driver.Status = Status.Availble;
+            _driverRepository.Update(driver);
+
+            Payment payment = _paymentRepository.Get(ride.PaymentId);
+            payment.Payed = true;
+            _paymentRepository.Update(payment);
+
+
+
+
+
+            return RedirectToAction("Index");
+        }
     }
 }
