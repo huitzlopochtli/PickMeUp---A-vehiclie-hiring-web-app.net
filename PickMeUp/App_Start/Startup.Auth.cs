@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using PickMeUp.Data;
 using PickMeUp.Entity;
@@ -50,22 +51,22 @@ namespace PickMeUp
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            //    clientId: "1037821005801-6cmu7qf2tp0l9499v03bof11s3jn289f.apps.googleusercontent.com",
+            //    clientSecret: " ");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "167226814042287",
+               appSecret: "79d275fa1c11f413e2366b92efcca2a0");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1037821005801-6cmu7qf2tp0l9499v03bof11s3jn289f.apps.googleusercontent.com",
+                ClientSecret = "yPxxjpXpuUG7TWZKLMNvcqMS"
+            });
         }
     }
 }

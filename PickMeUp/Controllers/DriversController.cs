@@ -91,7 +91,7 @@ namespace PickMeUp.Controllers
             _rideRepository.Update(ride);
 
 
-            return RedirectToAction("AcceptedRide", model);
+            return RedirectToAction("AcceptedRide", "Drivers", model);
         }
 
         public ActionResult AcceptedRide(DriversViewModel model)

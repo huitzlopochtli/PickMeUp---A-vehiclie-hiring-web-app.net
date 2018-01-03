@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PickMeUp.Entity.Ride>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table id="table" class="table">
+    <thead>
+        <tr>
+            <th>
+                Passenger
+            </th>
+            <th>
+                Driver
+            </th>
+            <th>
+                Payed With
+            </th>
+            <th>
+                Vehicle Type
+            </th>
+            <th>
+                Start Time
+            </th>
+            <th>
+                End Time
+            </th>
+            <th>
+                Start Location
+            </th>
+            <th>
+                End Location
+            </th>
+            <th>
+                Ride Status
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Passenger.User.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Driver.User.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Payment.PaymentType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RideStatus)
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#table").DataTable();
+        });
+    </script>
+}

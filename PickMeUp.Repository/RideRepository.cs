@@ -105,5 +105,10 @@ namespace PickMeUp.Repository
         {
             return Context.Rides.Include("Payment").Where(r => r.PassengerId == id).OrderByDescending(e => e.EndTime);
         }
+
+        public IEnumerable<Ride> GetAllRidesAdmin()
+        {
+            return Context.Rides.Include(r => r.Driver.User).Include(r => r.Passenger.User).Include(r => r.Payment.PaymentType).Include(r => r.VehicleType);
+        }
     }
 }

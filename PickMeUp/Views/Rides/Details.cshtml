@@ -1,0 +1,91 @@
+﻿@model PickMeUp.Entity.Ride
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ride</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver.DrivingLicence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.DrivingLicence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passenger.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passenger.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RideStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RideStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

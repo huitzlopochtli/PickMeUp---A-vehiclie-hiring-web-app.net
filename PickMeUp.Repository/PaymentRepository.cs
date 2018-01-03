@@ -12,7 +12,7 @@ namespace PickMeUp.Repository
     {
         public IEnumerable<Payment> GetAllWithPaymentType()
         {
-            return Context.Payments.Include("PaymentType").ToList();
+            return Context.Payments.Include("PaymentType").Include("Passenger").ToList();
         }
     }
 }

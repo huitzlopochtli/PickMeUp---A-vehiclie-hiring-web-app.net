@@ -219,6 +219,7 @@
     <Compile Include="Controllers\PassengersController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\PaymentTypesController.cs" />
+    <Compile Include="Controllers\RidesController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Controllers\VehicleTypesAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -567,6 +568,11 @@
     <Content Include="Views\Drivers\AcceptedRide.cshtml" />
     <Content Include="Views\Drivers\AllRides.cshtml" />
     <Content Include="Views\Passengers\AllRides.cshtml" />
+    <Content Include="Views\Rides\Create.cshtml" />
+    <Content Include="Views\Rides\Delete.cshtml" />
+    <Content Include="Views\Rides\Details.cshtml" />
+    <Content Include="Views\Rides\Edit.cshtml" />
+    <Content Include="Views\Rides\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

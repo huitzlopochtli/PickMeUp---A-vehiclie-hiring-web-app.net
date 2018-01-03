@@ -25,7 +25,8 @@ namespace PickMeUp.Controllers
         // GET: Payments
         public ActionResult Index()
         {
-            return View(_paymentRepository.GetAllWithPaymentType());
+            var b = _paymentRepository.GetAllWithPaymentType();
+            return View(b);
         }
 
         public ActionResult Details(int? id)

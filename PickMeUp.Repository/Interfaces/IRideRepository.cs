@@ -22,6 +22,8 @@ namespace PickMeUp.Repository.Interfaces
         void CancelRideByPassengerId(int? id);
 
         IEnumerable<Ride> GetRidesForDriver(RideStatus rideStatus, int vehicleTypeId);
+        IEnumerable<Ride> GetAllRidesAdmin();
+
 
         Ride GetWithPayment(int? id);
 

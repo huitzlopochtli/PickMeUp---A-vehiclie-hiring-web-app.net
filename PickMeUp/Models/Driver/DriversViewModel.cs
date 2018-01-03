@@ -26,13 +26,15 @@ namespace PickMeUp.Models.Driver
 
         public int Id { get; set; }
 
-
+        [Display(Name = "Start Location")]
         public string StartLocation { get; set; }
-
+        [Display(Name = "End Location")]
         public string EndLocation { get; set; }
 
+        [Display(Name = "Is Ride Payed")]
         public bool Payed { get; set; }
 
+        [Display(Name = "Charge")]
         public float Amount { get; set; }
     }
 }

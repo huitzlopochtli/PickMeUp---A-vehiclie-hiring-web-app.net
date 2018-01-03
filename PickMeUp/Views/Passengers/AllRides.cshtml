@@ -10,54 +10,64 @@
 <h3>
     Total Amount Spent : @ViewBag.TotalAmount
 </h3>
-<table class="table">
-    <tr>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.StartLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Payment.Amount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RideStatus)
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table id="table" class="table">
+    <thead>
         <tr>
 
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.StartLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Payment.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.RideStatus)
-            </td>
-
+            <th>
+                @Html.DisplayNameFor(model => model.StartLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payment.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RideStatus)
+            </th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
 
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Payment.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.RideStatus)
+                </td>
+
+            </tr>
+        }
+    </tbody>
 </table>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#table").DataTable();
+        });
+    </script>
+}
